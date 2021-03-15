@@ -48,6 +48,7 @@ showSolutionsMessage(2, 4, 2);
 function getAverageScore(data) {
     let averageScore = {};
     let objectLength = 0;
+
     for (let key in data) {
         averageScore[key] = getAverageMark(data[key]);
         objectLength++;
@@ -66,8 +67,8 @@ function getAverageMark(marks) {
     for (let i = 0; i < marks.length; i++) {
         sum += marks[i];
     }
-    let averageSum = sum / marks.length;
-    return averageSum;
+    let averageMark = sum / marks.length;
+    return averageMark;
 }
 
 console.log(getAverageScore({
@@ -78,3 +79,25 @@ console.log(getAverageScore({
 }));
 
 // task #3
+
+function getPersonData(secretData) {
+    let pirate = {
+        firstName: getDecodedValue(secretData.aaa),
+        lastName: getDecodedValue(secretData.bbb),
+    }
+    return pirate;
+}
+
+function getDecodedValue(secret) {
+
+    if (secret == 1) {
+        secret = 'Эмилио';
+    } else secret = 'Родриго';
+
+    return secret;
+}
+
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 0,
+}));
