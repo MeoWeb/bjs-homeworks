@@ -2,9 +2,13 @@
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
 
-    percent = Number(percent);
-    contribution = Number(contribution);
-    amount = Number(amount);
+    console.log('percent ' + typeof percent);
+    console.log('contribution ' + typeof contribution);
+    console.log('amount ' + typeof amount);
+
+    Percent = Number(percent);
+    Contribution = Number(contribution);
+    Amount = Number(amount);
 
     percent = percent / 100;
 
@@ -20,16 +24,17 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let monthAmount = S * (P + P / (((1 + P) ** numberOfMonths) - 1));
     let totalAmount = monthAmount * numberOfMonths;
 
+
     console.log(totalAmount);
     return totalAmount.toFixed(2);
 }
 
 function getGreeting(name) {
-
-    if (name === '') {
-        return `Привет, мир! Меня зовут Аноним.`;
+    let newName;
+    if (typeof name == 'undefined' || !name.length) {
+        newName = 'Аноним';
     } else {
-        return `Привет, мир! Меня зовут ${name}.`;
+        newName = name;
     }
+    return `Привет, мир! Меня зовут ${newName}.`;
 }
-
