@@ -43,29 +43,38 @@ function showSolutionsMessage(a, b, c) {
 
 showSolutionsMessage(2, 4, 2);
 
-// task #2
-/*
-function getAverageScore() {
-    let scores = {
-        algebra: [2, 3, 4, 5],
-        russian: [1, 2, 3, 4],
-        french: [1, 2, 3, 4, 5],
-        geometry: [1, 2, 3, 4, 5],
-        physics: [1, 2, 3, 4, 5],
-        music: [1, 2, 3, 4, 5],
-        poetry: [1, 2, 3, 4, 5],
-        english: [1, 2, 3, 4, 5],
-        chemistry: [1, 2, 3, 4, 5],
-    }
+//task #2
 
-    for (let prop in scores) {
-        let value = scores[prop];
-        console.log(`Предмет ${prop}, оценки: ${value}`);
+function getAverageScore(data) {
+    let averageScore = {};
+    let objectLength = 0;
+    for (let key in data) {
+        averageScore[key] = getAverageMark(data[key]);
+        objectLength++;
+    } if (objectLength === 0) {
+        return averageScore.average = 0;
     }
-
-    console.log(scores);
+    averageScore.average = (Object.values(averageScore).reduce((a, b) => a + b)) / objectLength;
+    return averageScore;
 }
-getAverageScore();
-*/
+
+function getAverageMark(marks) {
+    let sum = 0;
+    if (marks.length === 0) {
+        return 0;
+    }
+    for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
+    }
+    let averageSum = sum / marks.length;
+    return averageSum;
+}
+
+console.log(getAverageScore({
+    algebra: [2, 4, 5, 2, 3, 4],
+    russian: [3, 4, 4, 5],
+    french: [4, 4],
+    geometry: [2, 4, 5]
+}));
 
 // task #3
